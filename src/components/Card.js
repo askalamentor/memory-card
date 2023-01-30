@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/Card.css';
 
 export default class Card extends Component {
   render() {
@@ -9,9 +10,11 @@ export default class Card extends Component {
           className="card-img"
           alt="basketball player"
         />
-        <h3 className="card-text">
-          {this.props.firstName} {this.props.lastName}
-        </h3>
+        <div className="card-text-container">
+          <p className="card-text">
+            {this.props.firstName} {this.props.lastName}
+          </p>
+        </div>
       </div>
     );
   }

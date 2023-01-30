@@ -8,7 +8,7 @@ export default function Main() {
   const [players, setPlayers] = useState(Players);
 
   return (
-    <div>
+    <div className="Main">
       {players.array.map((player) => (
         <Card
           firstName={player.firstName}
