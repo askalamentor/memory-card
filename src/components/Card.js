@@ -4,7 +4,10 @@ import '../styles/Card.css';
 export default class Card extends Component {
   render() {
     return (
-      <div className="card-container" onClick={this.props.handleCardClick}>
+      <div
+        className="card-container"
+        onClick={() => this.props.handleCardClick(this.props.id)}
+      >
         <img
           src={require(`../images/${this.props.firstName.toLowerCase()}-${this.props.lastName.toLowerCase()}.png`)}
           className="card-img"

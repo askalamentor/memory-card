@@ -2,30 +2,38 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Main.css';
 import { Players } from '../utils';
 import Card from './Card';
-import uniqid from 'uniqid';
 
 export default function Main() {
   const [players, setPlayers] = useState(Players.array);
   const [randomArr, setRandomArr] = useState([]);
 
-  function handleCardClick(props) {
-    /*  if (!event.target.selected) {
-      setPlayers((event.target.selected = true));
-    } */
-    console.log(props.firstName);
+  function handleCardClick(id) {
+    setPlayers((prevPLayers) => {
+      return prevPLayers.map((player) => {
+        if (player.id === id) {
+          return { ...player, selected: true };
+        }
+        return player;
+      });
+    });
   }
 
   useEffect(() => {
     function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
+      const shuffledArray = [...array];
+      for (let i = shuffledArray.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [shuffledArray[i], shuffledArray[j]] = [
+          shuffledArray[j],
+          shuffledArray[i],
+        ];
       }
-      setRandomArr(array);
+      console.log(shuffledArray);
+      setRandomArr(shuffledArray);
     }
 
     shuffleArray(players);
-  });
+  }, [players]);
 
   return (
     <div className="Main">
@@ -33,7 +41,8 @@ export default function Main() {
         <Card
           firstName={player.firstName}
           lastName={player.lastName}
-          key={uniqid()}
+          key={player.id}
+          id={player.id}
           selected={player.selected}
           handleCardClick={handleCardClick}
         />
