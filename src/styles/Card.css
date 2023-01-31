@@ -11,7 +11,12 @@
   border: 3px solid greenyellow;
 }
 
+.card-img {
+  pointer-events: none;
+}
+
 .card-text-container {
+  pointer-events: none;
   height: 3rem;
 }
 
