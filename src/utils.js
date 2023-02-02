@@ -26,3 +26,8 @@ export const Players = {
     { firstName: 'Nikola', lastName: 'Jokic', selected: false, id: uniqid() },
   ],
 };
+
+export const Score = {
+  currentScore: 0,
+  bestScore: 0,
+};

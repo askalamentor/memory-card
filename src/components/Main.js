@@ -1,23 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Main.css';
-import { Players } from '../utils';
 import Card from './Card';
 
-export default function Main() {
-  const [players, setPlayers] = useState(Players.array);
+export default function Main(props) {
   const [randomArr, setRandomArr] = useState([]);
 
-  function handleCardClick(id) {
-    setPlayers((prevPLayers) => {
-      return prevPLayers.map((player) => {
-        if (player.id === id) {
-          return { ...player, selected: true };
-        }
-        return player;
-      });
-    });
-  }
-
+  // if any changes card's state (it can be only "selected" state),
+  // shuffle player array and render again
   useEffect(() => {
     function shuffleArray(array) {
       const shuffledArray = [...array];
@@ -29,22 +18,19 @@ export default function Main() {
         ];
       }
       console.log(shuffledArray);
+      // set mixed array
       setRandomArr(shuffledArray);
     }
-
-    shuffleArray(players);
-  }, [players]);
+    shuffleArray(props.players);
+  }, [props.players]);
 
   return (
     <div className="Main">
       {randomArr.map((player) => (
         <Card
-          firstName={player.firstName}
-          lastName={player.lastName}
+          player={player}
           key={player.id}
-          id={player.id}
-          selected={player.selected}
-          handleCardClick={handleCardClick}
+          handleCardClick={props.handleCardClick}
         />
       ))}
     </div>

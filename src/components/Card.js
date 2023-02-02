@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/Card.css';
 
-export default class Card extends Component {
-  render() {
-    return (
-      <div
-        className="card-container"
-        onClick={() => this.props.handleCardClick(this.props.id)}
-      >
-        <img
-          src={require(`../images/${this.props.firstName.toLowerCase()}-${this.props.lastName.toLowerCase()}.png`)}
-          className="card-img"
-          alt="basketball player"
-        />
-        <div className="card-text-container">
-          <p className="card-text">
-            {this.props.firstName} {this.props.lastName}
-          </p>
-        </div>
+export default function Card(props) {
+  return (
+    <div
+      className="card-container"
+      onClick={() => {
+        props.handleCardClick(props.player.id);
+      }}
+    >
+      <img
+        src={require(`../images/${props.player.firstName.toLowerCase()}-${props.player.lastName.toLowerCase()}.png`)}
+        className="card-img"
+        alt="basketball player"
+      />
+      <div className="card-text-container">
+        <p className="card-text">
+          {props.player.firstName} {props.player.lastName}
+        </p>
       </div>
-    );
-  }
+    </div>
+  );
 }
