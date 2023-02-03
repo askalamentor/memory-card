@@ -17,7 +17,6 @@ export default function Main(props) {
           shuffledArray[i],
         ];
       }
-      console.log(shuffledArray);
       // set mixed array
       setRandomArr(shuffledArray);
     }

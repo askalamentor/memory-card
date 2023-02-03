@@ -1,3 +1,10 @@
+:root {
+  --color-bg: #151515;
+  --color-font: #fdebed;
+  --color-card-bg: #3c415c;
+  --color-card-text-bg: #301b3f;
+}
+
 *,
 body {
   margin: 0;

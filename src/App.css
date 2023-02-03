@@ -1,4 +1,6 @@
 .App {
   display: grid;
   grid-template-rows: 1fr 7fr;
+  color: var(--color-font);
+  background-color: var(--color-bg);
 }

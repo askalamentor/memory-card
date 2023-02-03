@@ -65,8 +65,6 @@ function App() {
       resetSelectedStatus();
       setTriggerReset(false);
     }
-    console.log(bestScore);
-    console.log(currentScore);
   }, [currentScore, bestScore, triggerReset]);
 
   return (
